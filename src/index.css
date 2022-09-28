@@ -1,5 +1,10 @@
 /* Remove default padding */
 
+@font-face {
+	font-family: 'GoogleSans'; 
+	src: url(/src/assets/fonts/GoogleSans-Regular.woff2); 
+}
+
 body,
 h1,
 h2,

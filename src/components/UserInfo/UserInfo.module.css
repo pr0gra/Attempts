@@ -1,0 +1,8 @@
+.user-avatar{
+    width: 200px;
+}
+
+.user-link{
+    all:unset;
+    cursor: pointer;
+}

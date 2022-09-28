@@ -1,0 +1,5 @@
+.repo-link{
+    all: unset;
+    cursor: pointer;
+    list-style-type: none;
+}

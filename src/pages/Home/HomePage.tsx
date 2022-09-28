@@ -1,8 +1,8 @@
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import { MainFrame } from "../MainFrame/MainFrame";
+import { UsersArray } from "../../components/UsersArray/UsersArray";
 
-export function InputForm() {
+export function HomePage() {
   const [inputValue, setInputValue] = useState("");
 
   return (
@@ -14,10 +14,10 @@ export function InputForm() {
         }}
         action=""
       >
-        <TextField name="textField" label="let's find" />
+        <TextField name="textField" label="Find User" />
       </form>
 
-      <MainFrame userName={inputValue} />
+      <UsersArray userName={inputValue} />
     </>
   );
 }

@@ -12,7 +12,7 @@ export function UsersArray({ userName }) {
     data: users,
     isError,
     isLoading,
-  } = usersApi.useGetUsersByNameQuery(userName);
+  } = usersApi.useSearchUsersByNameQuery(userName);
 
   if (isError) {
     return <ErrorFrame />;
@@ -26,9 +26,9 @@ export function UsersArray({ userName }) {
       {users &&
         users.items.map((user: IUser) => {
           return (
-            <div>
+            <ul key={user.id}>
               <UserItem user={user} />
-            </div>
+            </ul>
           );
         })}
     </div>
