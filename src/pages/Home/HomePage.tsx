@@ -1,6 +1,7 @@
 import { TextField, Pagination } from "@mui/material";
 import { useState } from "react";
 import { UsersArray } from "../../components/UsersArray/UsersArray";
+import styles from "./HomePage.module.css";
 
 export function HomePage() {
   const [inputValue, setInputValue] = useState("");
@@ -8,8 +9,9 @@ export function HomePage() {
   const [pagesAmount, setPagesAmount] = useState(0);
 
   return (
-    <>
+    <div className={styles["input-form-home-container"]}>
       <form
+        className={styles["input-form-home"]}
         onSubmit={(e) => {
           e.preventDefault();
           setInputValue(e.target.textField.value);
@@ -20,6 +22,7 @@ export function HomePage() {
       </form>
       {!!pagesAmount && (
         <Pagination
+          className={styles["home-pagination"]}
           count={pagesAmount}
           page={currentPage}
           onChange={(_, num) => {
@@ -30,12 +33,13 @@ export function HomePage() {
 
       {inputValue && (
         <UsersArray
+          className={styles["users-array"]}
           userName={inputValue}
           setCurrentPage={setCurrentPage}
           setPagesAmount={setPagesAmount}
           currentPage={currentPage}
         />
       )}
-    </>
+    </div>
   );
 }

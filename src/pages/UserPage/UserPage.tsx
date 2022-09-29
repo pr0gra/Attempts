@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { ReposArray } from "../../components/ReposArray/ReposArray";
 import { UserInfo } from "../../components/UserInfo/UserInfo";
+import styles from "./UserPage.module.css";
 
 export function UserPage() {
   const { username } = useParams();
@@ -13,6 +14,7 @@ export function UserPage() {
   return (
     <>
       <form
+        className={styles["user-page-form"]}
         onSubmit={(e) => {
           e.preventDefault();
           setInputValue(e.target.textField.value);
@@ -23,6 +25,7 @@ export function UserPage() {
       </form>
       {!!pagesAmount && (
         <Pagination
+          className={styles["user-pagination"]}
           count={pagesAmount}
           page={currentPage}
           onChange={(_, num) => {
@@ -30,11 +33,10 @@ export function UserPage() {
           }}
         />
       )}
-      <UserInfo userName={username} />
+      <UserInfo userName={username} setPagesAmount={setPagesAmount} />
       <ReposArray
         userName={username}
         inputValue={inputValue}
-        setPagesAmount={setPagesAmount}
         currentPage={currentPage}
       />
     </>

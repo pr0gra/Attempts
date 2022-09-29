@@ -10,7 +10,7 @@ export function Header() {
           src="/src/assets/github-icon.svg"
           alt="Icon"
         />
-        <h1>Finding GitHub Issues</h1>
+        <h2 className={styles["header-title"]}>Finding GitHub Issues</h2>
       </Link>
     </header>
   );

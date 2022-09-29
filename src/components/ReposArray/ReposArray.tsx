@@ -17,15 +17,6 @@ export function ReposArray({
     isLoading,
   } = usersApi.useGetReposByNameQuery({ userName, currentPage });
 
-  useEffect(() => {
-    if (!repos) {
-      return;
-    }
-    console.log(repos);
-    console.log(repos.length);
-    setPagesAmount(Math.round(repos.length / 10));
-  }, [repos]);
-
   if (isError) {
     return <ErrorFrame />;
   }

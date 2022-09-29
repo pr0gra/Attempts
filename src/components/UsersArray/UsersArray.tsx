@@ -4,6 +4,7 @@ import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
 import { Spinner } from "../Spinner/Spinner";
 import { UserItem } from "../UserItem/UserItem";
 import { useEffect } from "react";
+import styles from "./UsersArray.module.css";
 
 interface UsersArrayProps {
   userName: string;
@@ -47,9 +48,9 @@ export function UsersArray({
     <div>
       {users.items.map((user: IUser) => {
         return (
-          <ul key={user.id}>
+          <li className={styles["user-item"]} key={user.id}>
             <UserItem user={user} />
-          </ul>
+          </li>
         );
       })}
     </div>

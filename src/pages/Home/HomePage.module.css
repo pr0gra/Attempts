@@ -1,0 +1,13 @@
+.input-form-home{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.home-pagination{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+
+

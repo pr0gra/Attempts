@@ -23,9 +23,9 @@ export const usersApi = createApi({
         const { userName, currentPage } = args;
         return {
           url: `users/${userName}/repos?page=${currentPage}`,
-          // params: {
-          //   per_page: 10,
-          // },
+          params: {
+            per_page: 10,
+          },
         };
       },
     }),

@@ -1,0 +1,7 @@
+.issues-titles-list{
+    display: flex;
+    flex-direction: column;
+}
+.issue-container{
+    display: flex;
+}

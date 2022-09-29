@@ -1,3 +1,17 @@
 .user-avatar{
-    max-width: 50px;
+    max-width: 65px;
+    border-radius: 30px;
+}
+
+.user-link{
+    display: flex;
+    text-decoration: none;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.user-name{
+    color: #1976d3;
 }
