@@ -7,14 +7,27 @@ export const usersApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.github.com/" }),
   endpoints: (builder) => ({
     searchUsersByName: builder.query({
-      query: (userName: string) => ({
-        url: `search/users?q=${userName}`,
-      }),
+      query: (args) => {
+        const { userName, currentPage } = args;
+
+        return {
+          url: `search/users?q=${userName}&page=${currentPage}`,
+          params: {
+            per_page: 10,
+          },
+        };
+      },
     }),
     getReposByName: builder.query({
-      query: (userName: string) => ({
-        url: `users/${userName}/repos`,
-      }),
+      query: (args) => {
+        const { userName, currentPage } = args;
+        return {
+          url: `users/${userName}/repos?page=${currentPage}`,
+          // params: {
+          //   per_page: 10,
+          // },
+        };
+      },
     }),
     getUserInfo: builder.query({
       query: (userName: string) => ({
@@ -24,7 +37,7 @@ export const usersApi = createApi({
     getUserIussues: builder.query({
       query: (args) => {
         const { userName, repo } = args;
-        console.log(args);
+
         return {
           url: `repos/${userName}/${repo}/issues`,
         };

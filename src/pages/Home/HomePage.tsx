@@ -1,9 +1,11 @@
-import { TextField } from "@mui/material";
+import { TextField, Pagination } from "@mui/material";
 import { useState } from "react";
 import { UsersArray } from "../../components/UsersArray/UsersArray";
 
 export function HomePage() {
   const [inputValue, setInputValue] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pagesAmount, setPagesAmount] = useState(0);
 
   return (
     <>
@@ -16,8 +18,24 @@ export function HomePage() {
       >
         <TextField name="textField" label="Find User" />
       </form>
+      {!!pagesAmount && (
+        <Pagination
+          count={pagesAmount}
+          page={currentPage}
+          onChange={(_, num) => {
+            setCurrentPage(num);
+          }}
+        />
+      )}
 
-      <UsersArray userName={inputValue} />
+      {inputValue && (
+        <UsersArray
+          userName={inputValue}
+          setCurrentPage={setCurrentPage}
+          setPagesAmount={setPagesAmount}
+          currentPage={currentPage}
+        />
+      )}
     </>
   );
 }

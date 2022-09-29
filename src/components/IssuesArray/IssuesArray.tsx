@@ -1,5 +1,6 @@
 import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
+import { IssueItem } from "../IssueItem/IssueItem";
 import { Spinner } from "../Spinner/Spinner";
 
 export function IssuesArray({ userName, repo }) {
@@ -15,5 +16,12 @@ export function IssuesArray({ userName, repo }) {
   if (isLoading) {
     return <Spinner />;
   }
-  return <></>;
+
+  return (
+    <>
+      {issues.map((issue) => {
+        return <IssueItem issue={issue} />;
+      })}
+    </>
+  );
 }

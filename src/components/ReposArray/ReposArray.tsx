@@ -1,15 +1,30 @@
+import { useEffect } from "react";
 import { IRepo } from "../../interfaces/IRepo";
 import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
 import { RepoItem } from "../RepoItem/RepoItem";
 import { Spinner } from "../Spinner/Spinner";
 
-export function ReposArray({ userName, inputValue }) {
+export function ReposArray({
+  userName,
+  inputValue,
+  setPagesAmount,
+  currentPage,
+}) {
   const {
     data: repos,
     isError,
     isLoading,
-  } = usersApi.useGetReposByNameQuery(userName);
+  } = usersApi.useGetReposByNameQuery({ userName, currentPage });
+
+  useEffect(() => {
+    if (!repos) {
+      return;
+    }
+    console.log(repos);
+    console.log(repos.length);
+    setPagesAmount(Math.round(repos.length / 10));
+  }, [repos]);
 
   if (isError) {
     return <ErrorFrame />;
