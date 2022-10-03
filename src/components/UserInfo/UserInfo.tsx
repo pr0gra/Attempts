@@ -15,7 +15,7 @@ export function UserInfo({ userName, setPagesAmount }) {
     if (!userInfo) {
       return;
     }
-    console.log(userInfo);
+
     setPagesAmount(Math.round(userInfo.public_repos / 10));
   }, [userInfo]);
 
@@ -27,16 +27,14 @@ export function UserInfo({ userName, setPagesAmount }) {
   }
 
   return (
-    <>
-      <a className={styles["user-link"]} href="https://github.com/pr0gra">
-        <img
-          className={styles["user-avatar"]}
-          src={userInfo.avatar_url}
-          alt=""
-        />
-      </a>
-      {userInfo.login}
-      {userInfo.name ? <p>name : {userInfo.name}</p> : <></>}
-    </>
+    <div className={styles["user-info"]}>
+      <img className={styles["user-avatar"]} src={userInfo.avatar_url} alt="" />
+      <div className={styles["text-part"]}>
+        <a className={styles["user-link"]} href="https://github.com/pr0gra">
+          {userInfo.login}
+        </a>
+        {userInfo.name ? <p>name : {userInfo.name}</p> : <></>}
+      </div>
+    </div>
   );
 }

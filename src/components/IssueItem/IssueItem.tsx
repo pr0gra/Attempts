@@ -4,14 +4,20 @@ export function IssueItem({ issue, setSelectedIssueInfo, selectedIssueInfo }) {
   return (
     <button
       className={styles["issue-item-button"]}
-      style={{
-        color: selectedIssueInfo.title === issue.title ? "red" : "black",
-      }}
       onClick={(e) => {
         setSelectedIssueInfo(issue);
       }}
     >
-      {issue.title}
+      <p
+        style={{
+          color:
+            selectedIssueInfo.title === issue.title
+              ? "var(--main-blue-color)"
+              : "var(--title-gray-color)",
+        }}
+      >
+        {issue.title}
+      </p>
     </button>
   );
 }

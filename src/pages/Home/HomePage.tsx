@@ -10,26 +10,30 @@ export function HomePage() {
 
   return (
     <div className={styles["input-form-home-container"]}>
-      <form
-        className={styles["input-form-home"]}
-        onSubmit={(e) => {
-          e.preventDefault();
-          setInputValue(e.target.textField.value);
-        }}
-        action=""
-      >
-        <TextField name="textField" label="Find User" />
-      </form>
-      {!!pagesAmount && (
-        <Pagination
-          className={styles["home-pagination"]}
-          count={pagesAmount}
-          page={currentPage}
-          onChange={(_, num) => {
-            setCurrentPage(num);
+      <div className={styles["input-pagination-container"]}>
+        <form
+          className={styles["input-form-home"]}
+          onSubmit={(e) => {
+            e.preventDefault();
+            setInputValue(e.target.textField.value);
           }}
-        />
-      )}
+          action=""
+        >
+          <TextField name="textField" label="Find User" />
+        </form>
+        {!!pagesAmount && (
+          <Pagination
+            className={styles["home-pagination"]}
+            count={pagesAmount}
+            page={currentPage}
+            color="primary"
+            variant="outlined"
+            onChange={(_, num) => {
+              setCurrentPage(num);
+            }}
+          />
+        )}
+      </div>
 
       {inputValue && (
         <UsersArray

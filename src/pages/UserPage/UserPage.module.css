@@ -1,11 +1,19 @@
-.user-page-form{
+.input-pagination-container{
     display: flex;
+    align-items: center;
+    margin: 0 auto;
     justify-content: center;
     margin-bottom: 20px;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.user-pagination{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+@media  (min-width: 768px) {
+    .input-pagination-container{
+        flex-direction: inherit;
+        justify-content: space-around;
+    }
+    .user-with-repos{
+        display: flex;
+    }
 }

@@ -1,8 +1,23 @@
 .user-avatar{
     width: 200px;
+    margin-bottom: 15px;
+    border: 2px solid var(--main-gray-color);
+    border-radius: 100px;
 }
 
 .user-link{
-    all:unset;
+    
     cursor: pointer;
+    
+}
+.text-part{
+    color: var(--main-gray-color);
+    text-decoration: none;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
 }

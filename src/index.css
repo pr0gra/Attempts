@@ -5,6 +5,12 @@
 	src: url(/src/assets/fonts/GoogleSans-Regular.woff2); 
 }
 
+:root{
+  --main-blue-color: #1976d3;
+  --main-gray-color: #a9a9a9;
+  --title-gray-color: #666;
+}
+
 body,
 h1,
 h2,

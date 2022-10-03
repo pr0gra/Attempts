@@ -13,32 +13,38 @@ export function UserPage() {
 
   return (
     <>
-      <form
-        className={styles["user-page-form"]}
-        onSubmit={(e) => {
-          e.preventDefault();
-          setInputValue(e.target.textField.value);
-        }}
-        action=""
-      >
-        <TextField name="textField" label="Find Repositories" />
-      </form>
-      {!!pagesAmount && (
-        <Pagination
-          className={styles["user-pagination"]}
-          count={pagesAmount}
-          page={currentPage}
-          onChange={(_, num) => {
-            setCurrentPage(num);
+      <div className={styles["input-pagination-container"]}>
+        <form
+          className={styles["user-page-form"]}
+          onSubmit={(e) => {
+            e.preventDefault();
+            setInputValue(e.target.textField.value);
           }}
+          action=""
+        >
+          <TextField name="textField" label="Find Repositories" />
+        </form>
+        {!!pagesAmount && (
+          <Pagination
+            color="primary"
+            variant="outlined"
+            className={styles["user-pagination"]}
+            count={pagesAmount}
+            page={currentPage}
+            onChange={(_, num) => {
+              setCurrentPage(num);
+            }}
+          />
+        )}
+      </div>
+      <div className={styles["user-with-repos"]}>
+        <UserInfo userName={username} setPagesAmount={setPagesAmount} />
+        <ReposArray
+          userName={username}
+          inputValue={inputValue}
+          currentPage={currentPage}
         />
-      )}
-      <UserInfo userName={username} setPagesAmount={setPagesAmount} />
-      <ReposArray
-        userName={username}
-        inputValue={inputValue}
-        currentPage={currentPage}
-      />
+      </div>
     </>
   );
 }

@@ -25,7 +25,6 @@ export function UsersArray({
     userName: userName,
     currentPage: currentPage,
   });
-  console.log(users);
 
   useEffect(() => {
     if (!users) {
@@ -45,7 +44,7 @@ export function UsersArray({
   }
 
   return (
-    <div>
+    <ul className={styles["users-list"]}>
       {users.items.map((user: IUser) => {
         return (
           <li className={styles["user-item"]} key={user.id}>
@@ -53,6 +52,6 @@ export function UsersArray({
           </li>
         );
       })}
-    </div>
+    </ul>
   );
 }

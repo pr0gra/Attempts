@@ -6,12 +6,16 @@
 .user-link{
     display: flex;
     text-decoration: none;
-    list-style-type: none;
     align-items: center;
     justify-content: space-between;
     
 }
 
 .user-name{
-    color: #1976d3;
+    color: var(--title-gray-color);
+}
+
+.user-link:hover h4{
+    transition-duration:0.2s;
+    color: var(--main-blue-color);
 }

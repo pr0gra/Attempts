@@ -4,6 +4,7 @@ import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
 import { RepoItem } from "../RepoItem/RepoItem";
 import { Spinner } from "../Spinner/Spinner";
+import styles from "./ReposArray.module.css";
 
 export function ReposArray({
   userName,
@@ -25,7 +26,7 @@ export function ReposArray({
   }
 
   return (
-    <>
+    <ul className={styles["repos-list"]}>
       {inputValue
         ? repos &&
           repos
@@ -43,6 +44,6 @@ export function ReposArray({
           repos.map((repo: IRepo) => {
             return <RepoItem key={repo.id} repo={repo} />;
           })}
-    </>
+    </ul>
   );
 }
