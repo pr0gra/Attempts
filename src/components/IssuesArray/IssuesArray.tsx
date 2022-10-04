@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
 import { IssueItem } from "../IssueItem/IssueItem";
@@ -23,7 +24,10 @@ export function IssuesArray({ inputValue, userName, repo }) {
 
   return (
     <div className={styles["issue-container"]}>
-      <h4 className={styles["repo-name"]}>{repo}</h4>
+      <h4 className={styles["repo-name"]}>
+        <Link className={styles["user-link"]} to={`/users/${userName}`}>{userName}</Link>>
+        {repo}
+      </h4>
       <div className={styles["issues-titles-list"]}>
         {issues.length == 0 ? (
           <p className={styles["empty-result"]}>

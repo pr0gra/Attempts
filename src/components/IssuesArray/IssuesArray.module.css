@@ -9,9 +9,17 @@
 
 }
 
+.user-link{
+    all:unset;
+    cursor: pointer;
+}
+
+.user-link:hover{
+    color: var(--main-blue-color);
+}
+
 .repo-name{
     color: var(--main-gray-color);
-    text-align: center;
 }
 
 .title-link{
