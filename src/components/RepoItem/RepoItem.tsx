@@ -9,9 +9,8 @@ export function RepoItem({ repo }) {
         className={styles["repo-link"]}
         to={`/users/${username}/repos/${repo.name}/issues`}
       >
-        <div className={styles["repo-name-container"]}>
-          <h4 className={styles["repo-name"]}>{repo.name}</h4>
-        </div>
+        <h4 className={styles["repo-name"]}>{repo.name}</h4>
+
         <div className={styles["repo-info"]}>
           <div className={styles["issue-amount-container"]}>
             <p className={styles["issue-amount-text"]}>Issues amount:</p>{" "}
