@@ -1,4 +1,4 @@
-.input-pagination-container{
+.input-container{
     display: flex;
     align-items: center;
     margin: 0 auto;
@@ -9,7 +9,7 @@
 }
 
 @media  (min-width: 768px) {
-    .input-pagination-container{
+    .input-container{
         flex-direction: inherit;
         justify-content: space-around;
     }

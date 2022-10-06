@@ -4,20 +4,16 @@ import { Spinner } from "../Spinner/Spinner";
 import styles from "./UserInfo.module.css";
 import { useEffect } from "react";
 
-export function UserInfo({ userName, setPagesAmount }) {
+interface UserInfoProps {
+  userName: string;
+}
+
+export function UserInfo({ userName }: UserInfoProps) {
   const {
     data: userInfo,
     isError,
     isLoading,
   } = usersApi.useGetUserInfoQuery(userName);
-
-  useEffect(() => {
-    if (!userInfo) {
-      return;
-    }
-
-    setPagesAmount(Math.round(userInfo.public_repos / 10));
-  }, [userInfo]);
 
   if (isError) {
     return <ErrorFrame />;
@@ -31,9 +27,10 @@ export function UserInfo({ userName, setPagesAmount }) {
       <img className={styles["user-avatar"]} src={userInfo.avatar_url} alt="" />
       <div className={styles["text-part"]}>
         <a className={styles["user-link"]} href="https://github.com/pr0gra">
-          {userInfo.login}
+          <h4>{userInfo.login}</h4>
         </a>
         {userInfo.name ? <p>name : {userInfo.name}</p> : <></>}
+        repos amount : {userInfo.public_repos}
       </div>
     </div>
   );

@@ -3,20 +3,17 @@ import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
 import { Spinner } from "../Spinner/Spinner";
 import { UserItem } from "../UserItem/UserItem";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./UsersArray.module.css";
+import { Pagination } from "@mui/material";
 
 interface UsersArrayProps {
   userName: string;
-  setPagesAmount: any;
-  currentPage: number;
 }
 
-export function UsersArray({
-  userName,
-  setPagesAmount,
-  currentPage,
-}: UsersArrayProps) {
+export function UsersArray({ userName }: UsersArrayProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+
   const {
     data: users,
     isError,
@@ -26,16 +23,6 @@ export function UsersArray({
     currentPage: currentPage,
   });
 
-  useEffect(() => {
-    if (!users) {
-      return;
-    }
-
-    users.total_count >= 1000
-      ? setPagesAmount(50)
-      : setPagesAmount(Math.round(users.total_count / 20));
-  }, [users]);
-
   if (isError) {
     return <ErrorFrame />;
   }
@@ -44,14 +31,35 @@ export function UsersArray({
   }
 
   return (
-    <ul className={styles["users-list"]}>
-      {users.items.map((user: IUser) => {
-        return (
-          <li className={styles["user-item"]} key={user.id}>
-            <UserItem user={user} />
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <ul className={styles["users-list"]}>
+        {users.items.map((user: IUser) => {
+          return (
+            <li className={styles["user-item"]} key={user.id}>
+              <UserItem user={user} />
+            </li>
+          );
+        })}
+      </ul>
+
+      {users.items.length ? (
+        <Pagination
+          className={styles["home-pagination"]}
+          count={
+            users.total_count > 1000 ? 100 : Math.ceil(users.total_count / 10)
+          }
+          page={currentPage}
+          color="primary"
+          variant="outlined"
+          onChange={(_, num) => {
+            setCurrentPage(num);
+          }}
+        />
+      ) : (
+        <p className={styles["no-users"]}>
+          There are no any user with this name :(
+        </p>
+      )}
+    </>
   );
 }

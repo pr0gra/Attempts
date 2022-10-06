@@ -20,12 +20,9 @@ export const usersApi = createApi({
     }),
     getReposByName: builder.query({
       query: (args) => {
-        const { userName, currentPage } = args;
+        const { userName } = args;
         return {
-          url: `users/${userName}/repos?page=${currentPage}`,
-          params: {
-            per_page: 10,
-          },
+          url: `users/${userName}/repos`,
         };
       },
     }),

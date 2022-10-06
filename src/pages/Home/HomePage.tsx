@@ -5,44 +5,22 @@ import styles from "./HomePage.module.css";
 
 export function HomePage() {
   const [inputValue, setInputValue] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pagesAmount, setPagesAmount] = useState(0);
 
   return (
     <div className={styles["input-form-home-container"]}>
-      <div className={styles["input-pagination-container"]}>
-        <form
-          className={styles["input-form-home"]}
-          onSubmit={(e) => {
-            e.preventDefault();
-            setInputValue(e.target.textField.value);
-          }}
-          action=""
-        >
-          <TextField name="textField" label="Find User" />
-        </form>
-        {!!pagesAmount && (
-          <Pagination
-            className={styles["home-pagination"]}
-            count={pagesAmount}
-            page={currentPage}
-            color="primary"
-            variant="outlined"
-            onChange={(_, num) => {
-              setCurrentPage(num);
-            }}
-          />
-        )}
-      </div>
+      <form
+        className={styles["input-form-home"]}
+        onSubmit={(e) => {
+          e.preventDefault();
+          setInputValue(e.target.textField.value);
+        }}
+        action=""
+      >
+        <TextField name="textField" label="Find User" />
+      </form>
 
       {inputValue && (
-        <UsersArray
-          className={styles["users-array"]}
-          userName={inputValue}
-          setCurrentPage={setCurrentPage}
-          setPagesAmount={setPagesAmount}
-          currentPage={currentPage}
-        />
+        <UsersArray className={styles["users-array"]} userName={inputValue} />
       )}
     </div>
   );
