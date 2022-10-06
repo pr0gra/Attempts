@@ -1,6 +1,7 @@
 .repos-pagination{
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 @media (min-width:768px) {

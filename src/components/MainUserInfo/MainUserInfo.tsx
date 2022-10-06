@@ -37,17 +37,6 @@ export function MainUserInfo({ userName, inputValue }: MainUserInfoProps) {
     <>
       <UserInfo userName={userName} />
       <ul className={styles["repos-list"]}>
-        {/* {inputValue
-          ? repos
-              .filter((repo: IRepo) => {
-                return repo.name.includes(inputValue);
-              })
-              .map((repo: IRepo) => {
-                return <RepoItem key={repo.id} repo={repo} />;
-              })
-          : repos.map((repo: IRepo) => {
-              return <RepoItem key={repo.id} repo={repo} />;
-            })} */}
         {inputValue
           ? repos
               .filter((repo: IRepo) => {
@@ -57,7 +46,7 @@ export function MainUserInfo({ userName, inputValue }: MainUserInfoProps) {
                 return <RepoItem key={repo.id} repo={repo} />;
               })
           : reposListPerPage.map((repo: IRepo) => {
-              return <RepoItem repo={repo} />;
+              return <RepoItem key={repo.id} repo={repo} />;
             })}
       </ul>
 
