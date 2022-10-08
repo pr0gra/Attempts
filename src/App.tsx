@@ -10,9 +10,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/users/:username" element={<UserPage />} />
+          <Route path="/users/:userName" element={<UserPage />} />
           <Route
-            path="/users/:username/repos/:repo/issues"
+            path="/users/:userName/repos/:repo/issues"
             element={<IssuesPage />}
           />
         </Route>

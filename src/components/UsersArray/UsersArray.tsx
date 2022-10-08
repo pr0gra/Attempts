@@ -6,6 +6,7 @@ import { UserItem } from "../UserItem/UserItem";
 import { useCallback, useEffect, useState } from "react";
 import styles from "./UsersArray.module.css";
 import { Pagination } from "@mui/material";
+import { SkeletonLoading } from "../SkeletonLoading/SkeletonLoading";
 
 interface UsersArrayProps {
   userName: string;
@@ -13,6 +14,10 @@ interface UsersArrayProps {
 
 export function UsersArray({ userName }: UsersArrayProps) {
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [userName]);
 
   const {
     data: users,
@@ -27,7 +32,7 @@ export function UsersArray({ userName }: UsersArrayProps) {
     return <ErrorFrame />;
   }
   if (isLoading) {
-    return <Spinner />;
+    return <SkeletonLoading />;
   }
 
   return (

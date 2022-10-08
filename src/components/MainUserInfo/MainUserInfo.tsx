@@ -1,61 +1,45 @@
 import { Pagination } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
-import { IRepo } from "../../interfaces/IRepo";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
-import { RepoItem } from "../RepoItem/RepoItem";
+import { ReposArray } from "../ReposArray/ReposArray";
+import { SkeletonLoading } from "../SkeletonLoading/SkeletonLoading";
 import { Spinner } from "../Spinner/Spinner";
 import { UserInfo } from "../UserInfo/UserInfo";
 import styles from "./MainUserInfo.module.css";
 
 interface MainUserInfoProps {
-  userName: string;
   inputValue: string;
 }
 
-export function MainUserInfo({ userName, inputValue }: MainUserInfoProps) {
+export function MainUserInfo({ inputValue }: MainUserInfoProps) {
+  const { userName } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-
   const {
-    data: repos,
+    data: userInfo,
     isError,
     isLoading,
-  } = usersApi.useGetReposByNameQuery({ userName, currentPage });
+  } = usersApi.useGetUserInfoQuery(userName);
 
   if (isError) {
     return <ErrorFrame />;
   }
   if (isLoading) {
-    return <Spinner />;
+    return <SkeletonLoading />;
   }
-  const reposListPerPage =
-    currentPage == 1
-      ? repos.slice((currentPage - 1) * 10, currentPage * 10)
-      : repos.slice((currentPage - 1) * 10, currentPage * 10 + 10);
 
   return (
     <>
-      <UserInfo userName={userName} />
-      <ul className={styles["repos-list"]}>
-        {inputValue
-          ? repos
-              .filter((repo: IRepo) => {
-                return repo.name.includes(inputValue);
-              })
-              .map((repo: IRepo) => {
-                return <RepoItem key={repo.id} repo={repo} />;
-              })
-          : reposListPerPage.map((repo: IRepo) => {
-              return <RepoItem key={repo.id} repo={repo} />;
-            })}
-      </ul>
+      <UserInfo userInfo={userInfo} />
+      <ReposArray currentPage={currentPage} inputValue={inputValue} />
 
-      {!inputValue && reposListPerPage.length > 0 && (
+      {!inputValue > 0 && userInfo.public_repos > 0 && (
         <Pagination
           color="primary"
           variant="outlined"
           className={styles["repos-pagination"]}
-          count={Math.ceil(repos.length / 10)}
+          count={Math.ceil(userInfo.public_repos / 10)}
           page={currentPage}
           onChange={(_, num) => {
             setCurrentPage(num);

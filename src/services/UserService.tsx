@@ -9,7 +9,6 @@ export const usersApi = createApi({
     searchUsersByName: builder.query({
       query: (args) => {
         const { userName, currentPage } = args;
-
         return {
           url: `search/users?q=${userName}&page=${currentPage}`,
           params: {
@@ -20,9 +19,13 @@ export const usersApi = createApi({
     }),
     getReposByName: builder.query({
       query: (args) => {
-        const { userName } = args;
+        const { userName, currentPage } = args;
+        let page = 1;
+        if (currentPage % 4 == 0) {
+          page += 1;
+        }
         return {
-          url: `users/${userName}/repos`,
+          url: `users/${userName}/repos?page=${page}`,
         };
       },
     }),
@@ -34,7 +37,6 @@ export const usersApi = createApi({
     getUserIussues: builder.query({
       query: (args) => {
         const { userName, repo } = args;
-
         return {
           url: `repos/${userName}/${repo}/issues`,
         };

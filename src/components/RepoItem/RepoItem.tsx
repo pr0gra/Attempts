@@ -2,12 +2,12 @@ import { Link, useParams } from "react-router-dom";
 import styles from "./RepoItem.module.css";
 
 export function RepoItem({ repo }) {
-  const { username } = useParams();
+  const { userName } = useParams();
   return (
     <li className={styles["repo-item"]}>
       <Link
         className={styles["repo-link"]}
-        to={`/users/${username}/repos/${repo.name}/issues`}
+        to={`/users/${userName}/repos/${repo.name}/issues`}
       >
         <h4 className={styles["repo-name"]}>{repo.name}</h4>
 

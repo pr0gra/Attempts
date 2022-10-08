@@ -1,11 +1,9 @@
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { MainUserInfo } from "../../components/MainUserInfo/MainUserInfo";
 import styles from "./UserPage.module.css";
 
 export function UserPage() {
-  const { username } = useParams();
   const [inputValue, setInputValue] = useState("");
 
   return (
@@ -21,7 +19,7 @@ export function UserPage() {
         <TextField name="textField" label="Find Repositories" />
       </form>
 
-      <MainUserInfo userName={username} inputValue={inputValue} />
+      <MainUserInfo inputValue={inputValue} />
     </>
   );
 }

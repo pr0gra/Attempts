@@ -8,20 +8,7 @@ interface UserInfoProps {
   userName: string;
 }
 
-export function UserInfo({ userName }: UserInfoProps) {
-  const {
-    data: userInfo,
-    isError,
-    isLoading,
-  } = usersApi.useGetUserInfoQuery(userName);
-
-  if (isError) {
-    return <ErrorFrame />;
-  }
-  if (isLoading) {
-    return <Spinner />;
-  }
-
+export function UserInfo({ userInfo }: UserInfoProps) {
   return (
     <div className={styles["user-info"]}>
       <img className={styles["user-avatar"]} src={userInfo.avatar_url} alt="" />

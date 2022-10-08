@@ -5,6 +5,10 @@
     padding: 10px  10px 10px 10px;
 }
 
+.containsTaskList{
+    list-style-type: none
+}
+
 /* .issue-item-button:hover p{
     color: var(--main-blue-color);
 } */

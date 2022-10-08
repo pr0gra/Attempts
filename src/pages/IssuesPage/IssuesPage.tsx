@@ -5,7 +5,6 @@ import { IssuesArray } from "../../components/IssuesArray/IssuesArray";
 import styles from "./IssuesPage.module.css";
 
 export function IssuesPage() {
-  const { username, repo } = useParams();
   const [inputValue, setInputValue] = useState();
 
   return (
@@ -20,7 +19,7 @@ export function IssuesPage() {
       >
         <TextField name="textField" label="Find Issues" />
       </form>
-      <IssuesArray inputValue={inputValue} userName={username} repo={repo} />
+      <IssuesArray inputValue={inputValue} />
     </div>
   );
 }
