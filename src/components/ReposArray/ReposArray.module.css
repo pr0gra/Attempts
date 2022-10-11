@@ -1,0 +1,7 @@
+@media (min-width:768px) {
+    .repos-array{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}

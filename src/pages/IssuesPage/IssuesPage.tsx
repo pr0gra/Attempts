@@ -9,16 +9,14 @@ export function IssuesPage() {
 
   return (
     <div className={styles["issue-page-container"]}>
-      <form
-        className={styles["issue-input-form"]}
-        onSubmit={(e) => {
-          e.preventDefault();
-          setInputValue(e.target.textField.value);
-        }}
-        action=""
-      >
-        <TextField name="textField" label="Find Issues" />
-      </form>
+      <div className={styles["issue-input"]}>
+        <TextField
+          onChange={(e) => {
+            setInputValue(e.currentTarget.value);
+          }}
+          label="Find Issues"
+        />
+      </div>
       <IssuesArray inputValue={inputValue} />
     </div>
   );

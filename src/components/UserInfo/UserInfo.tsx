@@ -1,11 +1,8 @@
-import { usersApi } from "../../services/UserService";
-import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
-import { Spinner } from "../Spinner/Spinner";
+import { IUserInfo } from "../../interfaces/IUserInfo";
 import styles from "./UserInfo.module.css";
-import { useEffect } from "react";
 
 interface UserInfoProps {
-  userName: string;
+  userInfo: IUserInfo;
 }
 
 export function UserInfo({ userInfo }: UserInfoProps) {

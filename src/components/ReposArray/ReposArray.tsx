@@ -4,8 +4,14 @@ import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
 import { RepoItem } from "../RepoItem/RepoItem";
 import { Spinner } from "../Spinner/Spinner";
+import styles from "./ReposArray.module.css";
 
-export function ReposArray({ currentPage, inputValue }) {
+interface ReposArrayProps {
+  currentPage: number;
+  inputValue: string;
+}
+
+export function ReposArray({ currentPage, inputValue }: ReposArrayProps) {
   const { userName } = useParams();
 
   const {
@@ -33,7 +39,7 @@ export function ReposArray({ currentPage, inputValue }) {
   const reposPerPage = definitionReposSlice();
 
   return (
-    <ul>
+    <ul className={styles["repos-array"]}>
       {!inputValue
         ? reposPerPage.map((repo: IRepo) => {
             return <RepoItem key={repo.id} repo={repo} />;

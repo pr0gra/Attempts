@@ -1,7 +1,12 @@
 import { Link, useParams } from "react-router-dom";
+import { IRepo } from "../../interfaces/IRepo";
 import styles from "./RepoItem.module.css";
 
-export function RepoItem({ repo }) {
+interface RepoItemProps {
+  repo: IRepo;
+}
+
+export function RepoItem({ repo }: RepoItemProps) {
   const { userName } = useParams();
   return (
     <li className={styles["repo-item"]}>

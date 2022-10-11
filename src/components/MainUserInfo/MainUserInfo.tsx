@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
 import { ReposArray } from "../ReposArray/ReposArray";
-import { SkeletonLoading } from "../SkeletonLoading/SkeletonLoading";
 import { Spinner } from "../Spinner/Spinner";
 import { UserInfo } from "../UserInfo/UserInfo";
 import styles from "./MainUserInfo.module.css";
@@ -14,7 +13,7 @@ interface MainUserInfoProps {
 }
 
 export function MainUserInfo({ inputValue }: MainUserInfoProps) {
-  const { userName } = useParams();
+  const { userName } = useParams<{ userName?: string }>();
   const [currentPage, setCurrentPage] = useState(1);
   const {
     data: userInfo,
@@ -26,7 +25,7 @@ export function MainUserInfo({ inputValue }: MainUserInfoProps) {
     return <ErrorFrame />;
   }
   if (isLoading) {
-    return <SkeletonLoading />;
+    return <Spinner />;
   }
 
   return (
@@ -34,7 +33,7 @@ export function MainUserInfo({ inputValue }: MainUserInfoProps) {
       <UserInfo userInfo={userInfo} />
       <ReposArray currentPage={currentPage} inputValue={inputValue} />
 
-      {!inputValue > 0 && userInfo.public_repos > 0 && (
+      {!inputValue && userInfo.public_repos > 0 && (
         <Pagination
           color="primary"
           variant="outlined"

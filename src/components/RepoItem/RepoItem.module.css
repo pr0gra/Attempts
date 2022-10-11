@@ -11,7 +11,6 @@
     padding: 10px  10px 0px 10px;
     margin-bottom: 20px;    
     list-style-type: none;
-    height: 65px;
 }
 
 .repo-info{
@@ -48,6 +47,7 @@
 }
 
 .repo-name{
+    flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -55,5 +55,8 @@
 
 
 @media (min-width:768px) {
-    
+    .repo-item{
+        box-sizing: border-box;
+        width: 49%;
+    }
 }

@@ -19,9 +19,7 @@ export function HomePage() {
         <TextField name="textField" label="Find User" />
       </form>
 
-      {inputValue && (
-        <UsersArray className={styles["users-array"]} userName={inputValue} />
-      )}
+      {inputValue && <UsersArray userName={inputValue} />}
     </div>
   );
 }

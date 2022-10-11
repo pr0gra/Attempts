@@ -3,10 +3,9 @@ import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
 import { Spinner } from "../Spinner/Spinner";
 import { UserItem } from "../UserItem/UserItem";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./UsersArray.module.css";
 import { Pagination } from "@mui/material";
-import { SkeletonLoading } from "../SkeletonLoading/SkeletonLoading";
 
 interface UsersArrayProps {
   userName: string;
@@ -32,7 +31,7 @@ export function UsersArray({ userName }: UsersArrayProps) {
     return <ErrorFrame />;
   }
   if (isLoading) {
-    return <SkeletonLoading />;
+    return <Spinner />;
   }
 
   return (

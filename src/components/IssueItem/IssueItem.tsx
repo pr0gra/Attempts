@@ -1,36 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import styles from "./IssueItem.module.css";
+import cx from "classnames";
+import { IIssueItem } from "../../interfaces/IIssueItem";
 
-export function IssueItem({ issue }) {
+interface IssueItemProps {
+  issue: IIssueItem;
+}
+
+export function IssueItem({ issue }: IssueItemProps) {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
+
   return (
     <>
       <button
-        className={styles["issue-item-button"]}
-        onClick={(e) => {
+        className={cx(
+          styles["issue-item-button"],
+          isOpen && styles["issue-active-button"]
+        )}
+        onClick={() => {
           setIsOpen(!isOpen);
         }}
       >
         <p
-          style={{
-            color: isOpen
-              ? "var(--main-blue-color)"
-              : "var(--title-gray-color)",
-          }}
+          className={cx(
+            styles["issue-title"],
+            isOpen && styles["issue-active-color"]
+          )}
         >
           {issue.title}
         </p>
       </button>
-      <div style={{ display: isOpen ? "block" : "none" }}>
-        <a href={issue.url} className={styles["title-link"]}>
-          <ReactMarkdown children={issue.title} remarkPlugins={[remarkGfm]} />
-        </a>
+      {isOpen && (
+        <div className={cx(styles["issue-text-part"])}>
+          <a href={issue.url} className={styles["title-link"]}>
+            <ReactMarkdown children={issue.title} remarkPlugins={[remarkGfm]} />
+          </a>
 
-        <ReactMarkdown children={issue.body} remarkPlugins={[remarkGfm]} />
-      </div>
+          <ReactMarkdown children={issue.body} remarkPlugins={[remarkGfm]} />
+        </div>
+      )}
     </>
   );
 }

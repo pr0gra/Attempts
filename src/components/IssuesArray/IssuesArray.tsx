@@ -6,8 +6,13 @@ import { IssueItem } from "../IssueItem/IssueItem";
 import { Spinner } from "../Spinner/Spinner";
 import styles from "./IssuesArray.module.css";
 
-export function IssuesArray({ inputValue }) {
+interface IssuesArrayProps{
+  inputValue?: string;
+}
+
+export function IssuesArray({ inputValue }: IssuesArrayProps) {
   const { userName, repo } = useParams();
+
   const {
     data: issues,
     isError,
@@ -25,11 +30,11 @@ export function IssuesArray({ inputValue }) {
     <div className={styles["issue-container"]}>
       <h4 className={styles["repo-name"]}>
         <Link className={styles["user-link"]} to={`/users/${userName}`}>
-          {userName}
+          {userName} 
         </Link>
-        {repo}
+        {" "}> {repo}
       </h4>
-      <div className={styles["issues-titles-list"]}>
+      <ul className={styles["issues-items-list"]}>
         {issues.length == 0 ? (
           <p className={styles["empty-result"]}>
             That repo haven't any issue :(
@@ -51,7 +56,7 @@ export function IssuesArray({ inputValue }) {
           : issues.map((issue) => {
               return <IssueItem key={issue.id} issue={issue} />;
             })}
-      </div>
+      </ul>
     </div>
   );
 }
