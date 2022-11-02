@@ -6,7 +6,7 @@ import { IssueItem } from "../IssueItem/IssueItem";
 import { Spinner } from "../Spinner/Spinner";
 import styles from "./IssuesArray.module.css";
 
-interface IssuesArrayProps{
+interface IssuesArrayProps {
   inputValue?: string;
 }
 
@@ -30,9 +30,9 @@ export function IssuesArray({ inputValue }: IssuesArrayProps) {
     <div className={styles["issue-container"]}>
       <h4 className={styles["repo-name"]}>
         <Link className={styles["user-link"]} to={`/users/${userName}`}>
-          {userName} 
+          {userName}
         </Link>
-        {" "}> {repo}
+        {repo}
       </h4>
       <ul className={styles["issues-items-list"]}>
         {issues.length == 0 ? (
