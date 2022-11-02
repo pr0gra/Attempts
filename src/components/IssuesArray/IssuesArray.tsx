@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { IIssueItem } from "../../interfaces/IIssueItem";
 import { usersApi } from "../../services/UserService";
 import { ErrorFrame } from "../ErrorFrame/ErrorFrame";
 import { IssueItem } from "../IssueItem/IssueItem";
@@ -45,15 +46,15 @@ export function IssuesArray({ inputValue }: IssuesArrayProps) {
 
         {inputValue
           ? issues
-              .filter((issue) => {
+              .filter((issue: IIssueItem) => {
                 return issue.title
                   .toLowerCase()
                   .includes(inputValue.toLowerCase());
               })
-              .map((issue) => {
+              .map((issue: IIssueItem) => {
                 return <IssueItem key={issue.id} issue={issue} />;
               })
-          : issues.map((issue) => {
+          : issues.map((issue: IIssueItem) => {
               return <IssueItem key={issue.id} issue={issue} />;
             })}
       </ul>

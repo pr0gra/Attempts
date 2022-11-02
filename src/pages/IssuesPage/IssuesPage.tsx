@@ -5,15 +5,16 @@ import { IssuesArray } from "../../components/IssuesArray/IssuesArray";
 import styles from "./IssuesPage.module.css";
 
 export function IssuesPage() {
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <div className={styles["issue-page-container"]}>
       <div className={styles["issue-input"]}>
         <TextField
           onChange={(e) => {
-            setInputValue(e.currentTarget.value);
+            setInputValue(e.target.value);
           }}
+          name="textField"
           label="Find Issues"
         />
       </div>

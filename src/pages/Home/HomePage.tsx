@@ -5,6 +5,7 @@ import styles from "./HomePage.module.css";
 
 export function HomePage() {
   const [inputValue, setInputValue] = useState("");
+  const [textFieldValue, setTextFieldValue] = useState("");
 
   return (
     <div className={styles["input-form-home-container"]}>
@@ -12,11 +13,18 @@ export function HomePage() {
         className={styles["input-form-home"]}
         onSubmit={(e) => {
           e.preventDefault();
-          setInputValue(e.target.textField.value);
+          setInputValue(textFieldValue);
         }}
         action=""
       >
-        <TextField name="textField" label="Find User" />
+        <TextField
+          onChange={(e) => {
+            setTextFieldValue(e.target.value);
+          }}
+          id="textField"
+          name="textField"
+          label="Find User"
+        />
       </form>
 
       {inputValue && <UsersArray userName={inputValue} />}

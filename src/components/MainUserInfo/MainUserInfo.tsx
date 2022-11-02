@@ -19,7 +19,7 @@ export function MainUserInfo({ inputValue }: MainUserInfoProps) {
     data: userInfo,
     isError,
     isLoading,
-  } = usersApi.useGetUserInfoQuery(userName);
+  } = usersApi.useGetUserInfoQuery(userName!);
 
   if (isError) {
     return <ErrorFrame />;
