@@ -1,11 +1,9 @@
-/* Remove default padding */
-
 @font-face {
-	font-family: 'GoogleSans'; 
-	src: url(/src/assets/fonts/GoogleSans-Regular.woff2); 
+  font-family: "GoogleSans";
+  src: url(/src/assets/fonts/GoogleSans-Regular.woff2);
 }
 
-:root{
+:root {
   --main-blue-color: #1976d3;
   --main-gray-color: #a9a9a9;
   --title-gray-color: #666;
@@ -32,18 +30,13 @@ fieldset {
   margin: 0;
 }
 
-/* Remove unexpected flex behaviour */
 * {
   flex-shrink: 0;
 }
 
-/* Use screen height */
-
 html {
   height: 100%;
 }
-
-/* Prevent font size change after orientation changes in iOS */
 
 body {
   min-height: 100%;
@@ -52,8 +45,6 @@ body {
   text-size-adjust: 100%;
 }
 
-/* Global font in controls */
-
 input,
 button,
 textarea,
@@ -61,13 +52,9 @@ select {
   font: inherit;
 }
 
-/* Fix clickable styling in iOS and Safari */
-
 button {
   appearance: button;
 }
-
-/* Pointer cursor for all interactive elements */
 
 a,
 select:not(:disabled),
@@ -75,14 +62,10 @@ button:not(:disabled) {
   cursor: pointer;
 }
 
-/* Remove border in Firefox */
-
 ::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
-
-/* Fix default display */
 
 img {
   display: block;
